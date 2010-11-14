@@ -3,8 +3,8 @@
 Stendhal guard allows to automatically & intelligently launch specs using
 stendhal when files are modified.
 
-- Compatible with any version of {stendhal}[http://github.com/txus/stendhal]
-- Tested on Ruby 1.8.6, 1.8.7 & 1.9.2.
+- Compatible with {stendhal}[http://github.com/txus/stendhal] 0.1.9 and above.
+- Tested on Ruby 1.8.7 & 1.9.2.
 
 == Install
 
