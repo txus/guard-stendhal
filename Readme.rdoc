@@ -1,0 +1,77 @@
+= Guard::Stendhal
+
+Stendhal guard allows to automatically & intelligently launch specs using
+stendhal when files are modified.
+
+- Compatible with any version of {stendhal}[http://github.com/txus/stendhal]
+- Tested on Ruby 1.8.6, 1.8.7 & 1.9.2.
+
+== Install
+
+Please be sure to have {guard}[http://github.com/guard/guard] installed before continue.
+
+Install the gem:
+
+    gem install guard-stendhal
+
+Add it to your Gemfile (inside test group):
+
+    gem 'guard-stendhal'
+
+Add guard definition to your Guardfile by running this command:
+
+    guard init stendhal
+
+== Usage
+
+Please read {guard usage doc}[http://github.com/guard/guard#readme]
+
+== Guardfile
+
+Stendhal guard can be really be adapted to all kinds of projects.
+Please read {guard doc}[http://github.com/guard/guard#readme] for more info about Guardfile DSL.
+
+=== Standard ruby gems
+
+    guard 'stendhal' do
+      watch('^spec/(.*)_spec.rb')
+      watch('^lib/(.*)\.rb')                              { |m| "spec/#{m[1]}_spec.rb" }
+      watch('^spec/spec_helper.rb')                       { "spec" }
+    end
+
+=== Rails app
+
+    guard 'stendhal' do
+      watch('^spec/(.*)_spec.rb')
+      watch('^app/(.*)\.rb')                              { |m| "spec/#{m[1]}_spec.rb" }
+      watch('^lib/(.*)\.rb')                              { |m| "spec/lib/#{m[1]}_spec.rb" }
+      watch('^spec/spec_helper.rb')                       { "spec" }
+      watch('^config/routes.rb')                          { "spec/routing" }
+      watch('^app/controllers/application_controller.rb') { "spec/controllers" }
+      watch('^spec/factories.rb')                         { "spec/models" }
+    end
+
+== Options
+
+    :bundler => false # don't use "bundle exec"
+
+== Development
+
+- Source hosted at {GitHub}[http://github.com/txus/guard-stendhal]
+- Report issues/Questions/Feature requests on {GitHub
+  Issues}[http://github.com/txus/guard-stendhal/issues]
+
+Pull requests are very welcome! Make sure your patches are well tested. Please create a topic branch for every separate change
+you make.
+
+=== Testing
+
+Please run "rake spec:prepare_fixtures" once before launching specs.
+
+== Authors
+
+{Txus (Josep M. Bach)}[http://github.com/txus]
+
+Acknowledgements to {Thibaud Guillaume-Gentil}[http://github.com/thibaudgg],
+author of Guard :)
+
